@@ -2,19 +2,13 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Mobile Navigation Toggle - Debug Version
-    console.log('Script loaded, looking for elements...');
+    // Mobile Navigation Toggle - Working Version
     const navToggle = document.querySelector('.nav-toggle');
     const navContainer = document.querySelector('.nav-container');
     
-    console.log('Found elements:', { navToggle, navContainer });
-    
     if (navToggle && navContainer) {
-        console.log('Adding click listener to nav toggle');
         navToggle.addEventListener('click', function() {
-            console.log('Nav toggle clicked!');
             navContainer.classList.toggle('mobile-menu-active');
-            console.log('Classes after toggle:', navContainer.classList.toString());
             
             // Animate hamburger to X
             const spans = navToggle.querySelectorAll('span');

@@ -958,16 +958,57 @@ p { margin-bottom: var(--spacing-sm); }
         transform: translateY(-2px);
     }
     
-    /* Emergency CSS - Make sure mobile menu is visible */
-    .mobile-menu-active {
-        background: red !important;
-        min-height: 200px !important;
-    }
-    
+    /* Fixed Mobile Menu Items */
     .mobile-menu-active .nav-left,
     .mobile-menu-active .nav-right {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin: 15px 0 !important;
+        position: static !important;
+    }
+    
+    .mobile-menu-active .nav-left ul,
+    .mobile-menu-active .nav-right ul {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        gap: 10px !important;
+    }
+    
+    .mobile-menu-active .nav-left li,
+    .mobile-menu-active .nav-right li {
+        width: 100% !important;
+        max-width: 200px !important;
+        text-align: center !important;
+    }
+    
+    .mobile-menu-active .nav-left a,
+    .mobile-menu-active .nav-right a {
         display: block !important;
-        background: yellow !important;
+        width: 100% !important;
+        padding: 15px 20px !important;
+        background: rgba(87, 221, 255, 0.15) !important;
+        color: var(--text-dark) !important;
+        text-decoration: none !important;
+        border-radius: 8px !important;
+        font-weight: 600 !important;
+        font-size: 16px !important;
+        transition: all 0.3s ease !important;
+        border: 1px solid rgba(87, 221, 255, 0.3) !important;
+    }
+    
+    .mobile-menu-active .nav-left a:hover,
+    .mobile-menu-active .nav-right a:hover {
+        background: var(--primary-blue) !important;
+        color: white !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 4px 15px rgba(87, 221, 255, 0.3) !important;
     }
     
     .hero-container {

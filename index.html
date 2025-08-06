@@ -570,25 +570,5 @@
     </footer>
 
     <script src="assets/js/script.js"></script>
-    
-    <!-- Emergency Mobile Nav Test -->
-    <script>
-        console.log('Emergency test script running');
-        document.addEventListener('DOMContentLoaded', function() {
-            const toggle = document.querySelector('.nav-toggle');
-            const container = document.querySelector('.nav-container');
-            console.log('Emergency test found:', { toggle, container });
-            
-            if (toggle) {
-                toggle.onclick = function() {
-                    console.log('EMERGENCY CLICK WORKED!');
-                    if (container) {
-                        container.classList.toggle('mobile-menu-active');
-                        console.log('Container classes:', container.className);
-                    }
-                };
-            }
-        });
-    </script>
 </body>
 </html>
