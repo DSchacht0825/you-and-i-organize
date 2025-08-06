@@ -861,6 +861,17 @@ p { margin-bottom: var(--spacing-sm); }
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    /* Fix mobile header overlap by adding body padding */
+    body {
+        padding-top: 100px; /* Adjust based on header height */
+    }
+    
+    /* Ensure header has proper height and positioning */
+    .header {
+        height: auto;
+        min-height: 80px;
+    }
+    
     .nav-left,
     .nav-right {
         display: none;
@@ -958,12 +969,17 @@ p { margin-bottom: var(--spacing-sm); }
 }
 
 @media (max-width: 480px) {
+    /* Increase body padding for smaller screens */
+    body {
+        padding-top: 120px; /* More space for smaller screens */
+    }
+    
     .container {
         padding: 0 var(--spacing-sm);
     }
     
     .hero {
-        padding: 100px 0 var(--spacing-xl);
+        padding: var(--spacing-lg) 0 var(--spacing-xl); /* Reduce top padding since body has padding */
     }
     
     .hero-title {
