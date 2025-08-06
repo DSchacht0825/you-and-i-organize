@@ -958,6 +958,18 @@ p { margin-bottom: var(--spacing-sm); }
         transform: translateY(-2px);
     }
     
+    /* Emergency CSS - Make sure mobile menu is visible */
+    .mobile-menu-active {
+        background: red !important;
+        min-height: 200px !important;
+    }
+    
+    .mobile-menu-active .nav-left,
+    .mobile-menu-active .nav-right {
+        display: block !important;
+        background: yellow !important;
+    }
+    
     .hero-container {
         grid-template-columns: 1fr;
         gap: var(--spacing-xl);
