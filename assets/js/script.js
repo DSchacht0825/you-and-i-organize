@@ -5,19 +5,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile Navigation Toggle
     const navToggle = document.querySelector('.nav-toggle');
     const navContainer = document.querySelector('.nav-container');
-    const navLeft = document.querySelector('.nav-left');
-    const navRight = document.querySelector('.nav-right');
     
     if (navToggle && navContainer) {
-        navToggle.addEventListener('click', function() {
+        navToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Toggle the mobile menu
             navContainer.classList.toggle('mobile-menu-active');
-            navLeft.classList.toggle('active');
-            navRight.classList.toggle('active');
             
             // Animate hamburger menu
             const spans = navToggle.querySelectorAll('span');
+            const isActive = navContainer.classList.contains('mobile-menu-active');
+            
             spans.forEach((span, index) => {
-                if (navContainer.classList.contains('mobile-menu-active')) {
+                if (isActive) {
                     if (index === 0) span.style.transform = 'rotate(45deg) translate(5px, 5px)';
                     if (index === 1) span.style.opacity = '0';
                     if (index === 2) span.style.transform = 'rotate(-45deg) translate(7px, -6px)';
@@ -25,6 +27,19 @@ document.addEventListener('DOMContentLoaded', function() {
                     span.style.transform = 'none';
                     span.style.opacity = '1';
                 }
+            });
+        });
+        
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navContainer.classList.remove('mobile-menu-active');
+                const spans = navToggle.querySelectorAll('span');
+                spans.forEach(span => {
+                    span.style.transform = 'none';
+                    span.style.opacity = '1';
+                });
             });
         });
     }
