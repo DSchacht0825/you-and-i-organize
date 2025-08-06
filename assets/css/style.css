@@ -277,6 +277,11 @@ p { margin-bottom: var(--spacing-sm); }
     border-radius: 2px;
 }
 
+/* Hide mobile menu by default */
+#mobile-menu {
+    display: none;
+}
+
 /* Modern Hero Section */
 .hero {
     background: linear-gradient(135deg, rgba(87, 221, 255, 0.05) 0%, rgba(255, 255, 255, 0.95) 50%, rgba(87, 221, 255, 0.03) 100%);

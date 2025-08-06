@@ -351,11 +351,32 @@
                     <li><a href="testimonials.html">Reviews</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
-                <button class="nav-toggle">
+                <button class="nav-toggle" id="mobile-menu-btn">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
+                
+                <!-- Mobile Menu Dropdown -->
+                <div id="mobile-menu" style="
+                    display: none;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    right: 0;
+                    background: white;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                    z-index: 1000;
+                    padding: 20px;
+                ">
+                    <div style="text-align: center;">
+                        <a href="index.html" style="display: block; padding: 12px; margin: 5px 0; background: rgba(87,221,255,0.1); border-radius: 6px; text-decoration: none; color: #333; font-weight: 600;">Home</a>
+                        <a href="services.html" style="display: block; padding: 12px; margin: 5px 0; background: rgba(87,221,255,0.1); border-radius: 6px; text-decoration: none; color: #333; font-weight: 600;">Services</a>
+                        <a href="about.html" style="display: block; padding: 12px; margin: 5px 0; background: rgba(87,221,255,0.1); border-radius: 6px; text-decoration: none; color: #333; font-weight: 600;">About</a>
+                        <a href="testimonials.html" style="display: block; padding: 12px; margin: 5px 0; background: rgba(87,221,255,0.1); border-radius: 6px; text-decoration: none; color: #333; font-weight: 600;">Reviews</a>
+                        <a href="contact.html" style="display: block; padding: 12px; margin: 5px 0; background: rgba(87,221,255,0.1); border-radius: 6px; text-decoration: none; color: #333; font-weight: 600;">Contact</a>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>
@@ -570,5 +591,25 @@
     </footer>
 
     <script src="assets/js/script.js"></script>
+    
+    <!-- Bulletproof Mobile Menu Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            
+            if (btn && menu) {
+                btn.addEventListener('click', function() {
+                    if (menu.style.display === 'none' || menu.style.display === '') {
+                        menu.style.display = 'block';
+                        console.log('Menu opened');
+                    } else {
+                        menu.style.display = 'none';
+                        console.log('Menu closed');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
