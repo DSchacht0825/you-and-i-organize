@@ -2,45 +2,14 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Mobile Navigation Toggle - Working Version
+    // Simple Mobile Navigation
     const navToggle = document.querySelector('.nav-toggle');
     const navContainer = document.querySelector('.nav-container');
     
-    if (navToggle && navContainer) {
+    if (navToggle) {
         navToggle.addEventListener('click', function() {
             navContainer.classList.toggle('mobile-menu-active');
-            
-            // Animate hamburger to X
-            const spans = navToggle.querySelectorAll('span');
-            const isActive = navContainer.classList.contains('mobile-menu-active');
-            
-            spans.forEach((span, index) => {
-                if (isActive) {
-                    if (index === 0) span.style.transform = 'rotate(45deg) translate(5px, 5px)';
-                    if (index === 1) span.style.opacity = '0';
-                    if (index === 2) span.style.transform = 'rotate(-45deg) translate(7px, -6px)';
-                } else {
-                    span.style.transform = 'none';
-                    span.style.opacity = '1';
-                }
-            });
         });
-        
-        // Close menu when clicking navigation links
-        const navLinks = document.querySelectorAll('.nav-menu a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navContainer.classList.remove('mobile-menu-active');
-                // Reset hamburger
-                const spans = navToggle.querySelectorAll('span');
-                spans.forEach(span => {
-                    span.style.transform = 'none';
-                    span.style.opacity = '1';
-                });
-            });
-        });
-    } else {
-        console.error('Mobile navigation elements not found');
     }
     
     // Smooth scrolling for navigation links
