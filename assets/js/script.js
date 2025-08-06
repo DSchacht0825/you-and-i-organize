@@ -175,48 +175,48 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
             
-            // Submit to Formspree
-            fetch(this.action, {
-                method: 'POST',
-                body: new FormData(this),
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    // Redirect to thank you page on success
-                    window.location.href = 'thank-you.html';
-                } else {
-                    throw new Error('Network response was not ok');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                // Provide fallback mailto option
-                const subject = 'New Quote Request - you&I organize';
-                const name = formData.get('name');
-                const email = formData.get('email');
-                const phone = formData.get('phone');
-                const service = formData.get('service');
-                const message = formData.get('message');
-                const body = `Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\nService: ${service}\nMessage: ${message || 'No additional message'}`;
-                
-                const mailtoLink = `mailto:MMorales.organize@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                
-                showNotification('Form submission failed. Redirecting to email...', 'error');
-                
-                // Give user option to use email client
+            // Try direct email instead of problematic Formspree
+            const subject = 'New Quote Request - you&I organize';
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const phone = formData.get('phone') || 'Not provided';
+            const service = formData.get('service');
+            const message = formData.get('message') || 'No additional message';
+            
+            const body = `Hi Marissa,
+
+I would like to request a quote for your organizing services.
+
+Contact Details:
+- Name: ${name}
+- Email: ${email}
+- Phone: ${phone}
+- Service Requested: ${service}
+
+Message:
+${message}
+
+Please contact me at your earliest convenience to discuss my organizing needs and provide a quote.
+
+Thank you!
+${name}`;
+            
+            const mailtoLink = `mailto:MMorales.organize@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Show success message and redirect to email
+            showNotification('Opening your email client to send the quote request...', 'success');
+            
+            setTimeout(() => {
+                window.location.href = mailtoLink;
+                // Also redirect to thank you page after email opens
                 setTimeout(() => {
-                    if (confirm('Would you like to send this quote request via your email client instead?')) {
-                        window.location.href = mailtoLink;
-                    }
-                }, 2000);
-            })
-            .finally(() => {
+                    window.location.href = 'thank-you.html';
+                }, 3000);
+                
+                // Reset button
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
-            });
+            }, 1500);
         });
     }
     
