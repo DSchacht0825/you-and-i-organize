@@ -108,7 +108,7 @@
                             </div>
                             
                             <div class="form-group">
-                                <input type="email" name="email" placeholder="Your Email" required>
+                                <input type="email" name="_replyto" placeholder="Your Email" required>
                             </div>
                             
                             <div class="form-group">
@@ -129,13 +129,13 @@
                             </div>
                             
                             <div class="form-group">
-                                <textarea name="message" placeholder="Tell us about your organizing needs..." rows="4"></textarea>
+                                <textarea name="message" placeholder="Tell us about your organizing needs..." rows="4" required></textarea>
                             </div>
                             
                             <!-- Hidden fields for better email organization -->
                             <input type="hidden" name="_subject" value="New Quote Request - you&I organize">
-                            <input type="hidden" name="_next" value="thank-you">
-                            <input type="hidden" name="_cc" value="MMorales.organize@gmail.com">
+                            <input type="hidden" name="_next" value="https://youandiorganize.com/thank-you.html">
+                            <input type="hidden" name="_language" value="en">
                             
                             <button type="submit" class="btn btn-primary btn-full">Get Free Quote</button>
                         </form>

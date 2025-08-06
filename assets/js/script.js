@@ -138,15 +138,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
             
-            // Basic validation
-            if (!data.name || !data.email || !data.service) {
+            // Basic validation - check for _replyto field
+            const email = data._replyto || data.email;
+            if (!data.name || !email || !data.service) {
                 showNotification('Please fill in all required fields.', 'error');
                 return;
             }
             
             // Email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(data.email)) {
+            if (!emailRegex.test(email)) {
                 showNotification('Please enter a valid email address.', 'error');
                 return;
             }
@@ -167,15 +168,33 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(response => {
                 if (response.ok) {
-                    showNotification('Thank you for your quote request! We\'ll get back to you within 24 hours.', 'success');
-                    this.reset();
+                    // Redirect to thank you page on success
+                    window.location.href = 'thank-you.html';
                 } else {
                     throw new Error('Network response was not ok');
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                showNotification('Sorry, there was an error sending your message. Please try calling us directly.', 'error');
+                // Provide fallback mailto option
+                const subject = 'New Quote Request - you&I organize';
+                const name = formData.get('name');
+                const email = formData.get('_replyto');
+                const phone = formData.get('phone');
+                const service = formData.get('service');
+                const message = formData.get('message');
+                const body = `Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\nService: ${service}\nMessage: ${message || 'No additional message'}`;
+                
+                const mailtoLink = `mailto:MMorales.organize@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                
+                showNotification('Form submission failed. Redirecting to email...', 'error');
+                
+                // Give user option to use email client
+                setTimeout(() => {
+                    if (confirm('Would you like to send this quote request via your email client instead?')) {
+                        window.location.href = mailtoLink;
+                    }
+                }, 2000);
             })
             .finally(() => {
                 submitBtn.textContent = originalText;
