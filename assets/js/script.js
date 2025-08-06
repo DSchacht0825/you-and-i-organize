@@ -126,24 +126,41 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+            // Don't prevent default immediately - let's validate first
+            
+            console.log('Form submission started'); // Debug log
             
             // Get form data
             const formData = new FormData(this);
-            const data = {};
             
-            for (let [key, value] of formData.entries()) {
-                if (!key.startsWith('_')) { // Skip hidden Formspree fields
-                    data[key] = value;
-                }
-            }
+            // Get values directly from formData
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const service = formData.get('service');
+            const message = formData.get('message');
             
-            // Basic validation - check for _replyto field
-            const email = data._replyto || data.email;
-            if (!data.name || !email || !data.service) {
-                showNotification('Please fill in all required fields.', 'error');
+            // Debug logging
+            console.log('Form data:', { name, email, service, message });
+            
+            // Basic validation with detailed feedback
+            if (!name || name.trim() === '') {
+                e.preventDefault();
+                showNotification('Please enter your name.', 'error');
                 return;
             }
+            if (!email || email.trim() === '') {
+                e.preventDefault();
+                showNotification('Please enter your email address.', 'error');
+                return;
+            }
+            if (!service || service === '') {
+                e.preventDefault();
+                showNotification('Please select a service type.', 'error');
+                return;
+            }
+            
+            // If we get here, validation passed, prevent default and handle with JS
+            e.preventDefault();
             
             // Email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -179,7 +196,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Provide fallback mailto option
                 const subject = 'New Quote Request - you&I organize';
                 const name = formData.get('name');
-                const email = formData.get('_replyto');
+                const email = formData.get('email');
                 const phone = formData.get('phone');
                 const service = formData.get('service');
                 const message = formData.get('message');
