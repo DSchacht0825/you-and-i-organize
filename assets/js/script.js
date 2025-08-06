@@ -2,19 +2,15 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Mobile Navigation Toggle
+    // Mobile Navigation Toggle - Simple and Reliable
     const navToggle = document.querySelector('.nav-toggle');
     const navContainer = document.querySelector('.nav-container');
     
     if (navToggle && navContainer) {
-        navToggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            // Toggle the mobile menu
+        navToggle.addEventListener('click', function() {
             navContainer.classList.toggle('mobile-menu-active');
             
-            // Animate hamburger menu
+            // Animate hamburger to X
             const spans = navToggle.querySelectorAll('span');
             const isActive = navContainer.classList.contains('mobile-menu-active');
             
@@ -30,11 +26,12 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // Close menu when clicking on a link
+        // Close menu when clicking navigation links
         const navLinks = document.querySelectorAll('.nav-menu a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 navContainer.classList.remove('mobile-menu-active');
+                // Reset hamburger
                 const spans = navToggle.querySelectorAll('span');
                 spans.forEach(span => {
                     span.style.transform = 'none';
@@ -42,6 +39,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
         });
+    } else {
+        console.error('Mobile navigation elements not found');
     }
     
     // Smooth scrolling for navigation links
