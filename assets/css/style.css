@@ -868,7 +868,7 @@ p { margin-bottom: var(--spacing-sm); }
 @media (max-width: 768px) {
     /* Fix body padding for mobile header */
     body {
-        padding-top: 80px;
+        padding-top: 90px;
     }
     
     /* Mobile header */
@@ -876,6 +876,16 @@ p { margin-bottom: var(--spacing-sm); }
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(10px);
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Responsive logo sizing for mobile */
+    .logo img {
+        height: 60px !important;
+        max-width: 280px !important;
+    }
+    
+    .navbar {
+        padding: 10px 0 !important;
     }
     
     /* Hide desktop navigation */
@@ -1114,4 +1124,28 @@ html {
 .testimonial-card,
 .feature-item {
     animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Additional mobile breakpoint for very small screens */
+@media (max-width: 480px) {
+    body {
+        padding-top: 80px;
+    }
+    
+    .logo img {
+        height: 50px !important;
+        max-width: 240px !important;
+    }
+    
+    .navbar {
+        padding: 8px 0 !important;
+    }
+    
+    .nav-container {
+        padding: 0 15px !important;
+    }
+    
+    .nav-toggle {
+        right: 15px !important;
+    }
 }
