@@ -332,6 +332,192 @@
             background: linear-gradient(135deg, var(--soft-pink) 0%, var(--pink-accent) 100%);
             color: var(--text-dark);
         }
+        
+        /* Media Feature Section Styles */
+        .media-feature {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #fafafa 0%, var(--light-pink) 100%);
+            position: relative;
+        }
+        
+        .media-badge {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .badge-text {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--warm-pink) 0%, var(--pink-accent) 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .media-content {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.08);
+            padding: 60px;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .media-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--warm-pink) 0%, #57ddff 100%);
+        }
+        
+        .media-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            border-radius: 15px;
+        }
+        
+        .media-logo {
+            height: 80px;
+            width: auto;
+            margin-bottom: 25px;
+            display: inline-block;
+        }
+        
+        .media-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .media-date {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .media-quote {
+            background: linear-gradient(135deg, var(--light-pink) 0%, var(--soft-pink) 50%);
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .media-quote blockquote {
+            margin: 0;
+            position: relative;
+        }
+        
+        .media-quote blockquote::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            font-size: 80px;
+            color: var(--warm-pink);
+            opacity: 0.3;
+            font-family: serif;
+        }
+        
+        .media-quote p {
+            font-size: 20px;
+            line-height: 1.6;
+            color: var(--text-dark);
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .media-quote cite {
+            display: block;
+            text-align: right;
+            color: var(--medium-gray);
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+        }
+        
+        .article-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .highlight-item {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .highlight-icon {
+            display: inline-block;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .highlight-item h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+        
+        .highlight-item p {
+            font-size: 14px;
+            color: var(--medium-gray);
+            line-height: 1.6;
+        }
+        
+        .media-cta {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #f0f0f0;
+        }
+        
+        .media-cta .btn {
+            margin-bottom: 15px;
+        }
+        
+        .media-description {
+            color: var(--medium-gray);
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        /* Mobile responsiveness for media feature */
+        @media (max-width: 768px) {
+            .media-content {
+                padding: 40px 20px;
+            }
+            
+            .media-title {
+                font-size: 24px;
+            }
+            
+            .media-quote {
+                padding: 25px;
+            }
+            
+            .media-quote p {
+                font-size: 16px;
+            }
+            
+            .article-highlights {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -448,6 +634,59 @@
                         <div class="section-footer">
                             <a href="contact.html" class="btn btn-primary">Work With Me</a>
                             <a href="about.html" class="btn btn-outline">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Media Feature Section -->
+        <section id="media-feature" class="media-feature">
+            <div class="container">
+                <div class="media-badge">
+                    <span class="badge-text">AS FEATURED IN</span>
+                </div>
+                
+                <div class="media-content">
+                    <div class="media-header">
+                        <img src="assets/images/voyager.png" alt="SD Voyager" class="media-logo" />
+                        <h2 class="media-title">Community Highlights: Meet Marissa Morales</h2>
+                        <p class="media-date">Featured Interview • August 25, 2025</p>
+                    </div>
+                    
+                    <div class="media-body">
+                        <div class="media-quote">
+                            <blockquote>
+                                <p>"I really do enjoy what I do and love all my customers. Life is messy—and I am the extra hand that helps tackle those tasks you can't get to."</p>
+                                <cite>— Marissa Morales, Founder of you&I organize</cite>
+                            </blockquote>
+                        </div>
+                        
+                        <div class="article-highlights">
+                            <div class="highlight-item">
+                                <span class="highlight-icon">📰</span>
+                                <h4>Featured Story</h4>
+                                <p>Read about Marissa's journey from working an 8-6 job to founding San Diego's premier organizing service</p>
+                            </div>
+                            
+                            <div class="highlight-item">
+                                <span class="highlight-icon">💡</span>
+                                <h4>Business Philosophy</h4>
+                                <p>"If you have to think about it too long, then you should let it go" - Learn about our unique approach to organizing</p>
+                            </div>
+                            
+                            <div class="highlight-item">
+                                <span class="highlight-icon">🌟</span>
+                                <h4>Community Impact</h4>
+                                <p>Discover how we're helping San Diego families create peaceful, organized homes one space at a time</p>
+                            </div>
+                        </div>
+                        
+                        <div class="media-cta">
+                            <a href="https://sdvoyager.com/interview/community-highlights-meet-marissa-morales-of-youi-organize" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                                Read Full Interview →
+                            </a>
+                            <p class="media-description">Learn more about Marissa's inspiring journey and the story behind you&I organize</p>
                         </div>
                     </div>
                 </div>
